@@ -13,18 +13,11 @@ public class SupportTicketSystem {
         System.out.println("Next ticket : " + ticket.peek());
         System.out.println("removing the fist waiting : " + ticket.poll());
         System.out.println("No of waiting list = " + ticket.size());
-        ticket.offer(("TICKET-005 Email not received"));
+        ticket.offer("TICKET-005 Email not received");
         while(!ticket.isEmpty()){
-            System.out.println("processing the waiting list : " + ticket.peek());
-            ticket.poll();
+            System.out.println("processing the waiting list : " + ticket.poll());
         }
 
         System.out.println("Queue empty : " + ticket.isEmpty());
-        if(ticket.isEmpty()){
-            System.out.println("Queue is empty now");
-        }
-        else{
-            System.out.println("Queue is not empty currenly");
-        }
     }
 }
