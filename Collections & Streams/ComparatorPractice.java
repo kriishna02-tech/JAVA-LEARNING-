@@ -89,7 +89,7 @@ public class ComparatorPractice {
                 return Integer.compare(p2.getStock(), p1.getStock());
             }
         });
-
+         
         System.out.println("\n----- Stock: High to Low -----");
         for (Product p : products) {
             System.out.println(p);

@@ -35,7 +35,7 @@ class Product implements Comparable<Product> {
         return id + " | " + name + " | ₹" + price;
     }
 }
-
+     
 public class ComparablePractice {
 
     public static void main(String[] args) {
