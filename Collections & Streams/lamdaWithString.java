@@ -13,7 +13,7 @@ public class lamdaWithString {
     System.out.println("without sorting");
     System.out.println(name);
     
-    name.sort((a, b) -> a.compareTo(b));    // THIS IS IMPORTANT
+    name.sort((a, b) -> a.compareTo(b));    // THIS IS IMPORTANT    
     System.out.println(name);
 
     }
