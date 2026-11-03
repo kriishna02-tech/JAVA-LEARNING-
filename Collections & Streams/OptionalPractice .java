@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,14 @@ public class OptionalPractice {
         names.add("Sam");
         names.add("John");
 
+
+        // The most useful ones to remember are:
+                // Optional.of(value)
+                // Optional.empty()
+                // Optional.ofNullable(value)
+                // isPresent()
+                // orElse()
+                // ifPresent()
         Optional<String> result1 = findName(names, "Sam");
         Optional<String> result2 = findName(names, "David");
 
