@@ -42,6 +42,10 @@ public class StudentManager {
         do {
             System.out.println("\n1. Update marks");
             System.out.println("2. Add student");
+            System.out.println("3. Delete student");
+            System.out.println("4. print all students");
+            System.out.println("5. Find highest-scoring student");
+            System.out.println("6. Calculate average marks");
             System.out.println("0. EXIT");
             System.out.print("Enter choice: ");
 
@@ -89,15 +93,86 @@ public class StudentManager {
                     int newStudentMarks = sc.nextInt();
 
                     students.add(new Student(
-                        newStudentId,
-                        newStudentName,
-                        newStudentMarks
-                    ));
+                            newStudentId,
+                            newStudentName,
+                            newStudentMarks));
 
                     System.out.println("Student added successfully!");
                     break;
                 }
 
+                case 3: {
+                    System.out.println("Enter id");
+                    int stId = sc.nextInt();
+                    boolean status = false;
+                    // for (Student st : students) {
+                    //     if (st.getId() == stId) {
+                    //         students.remove(st);
+                    //         status = true;
+                    //         System.out.println("Student deleted successfull");
+                    //         break;
+                    //     }
+                    // }
+                    for (int i = 0 ; i< students.size() ; i++) {
+                        Student st  = students.get(i);
+                        if (st.getId() == stId) {
+                            students.remove(i);
+                            status = true;
+                            System.out.println("Student deleted successfull");
+                            break;
+                        }
+                    }
+
+                    if (!status) {
+                        System.out.println("Student not found");
+                    }
+                    for (Student st : students) {
+                        System.out.println(st);
+                    }
+
+                    break;
+                }
+
+                case 4: {
+                    for (Student st : students) {
+                        System.out.println(st);
+                    }
+                    break;
+                }
+
+                case 5 : {
+                    Student topper  = null;
+                    if(students.size() == 0 ){
+                        System.out.println("No student in class");
+                    } else{
+                        topper = students.get(0);
+                    }
+                    int max_marks = 0;
+                    for(Student st : students){
+                        if(st.getMarks() > max_marks){
+                            max_marks = st.getMarks();
+                            topper = st;
+                        }
+                    }
+                    System.out.println("topper :" + topper );
+                    break;
+                }
+
+                case 6:{
+                    int noStudent = students.size();
+                    if(noStudent == 0){
+                        System.out.println("No students available to calculate average.");
+                        break;
+                    }
+                    else{
+                        double avgMarks = 0;
+                        for(Student st : students){
+                            avgMarks+=st.getMarks();
+                        }
+                        System.out.println("Average marks : " + avgMarks/noStudent);
+                    }
+                    break;
+                }
                 case 0: {
                     System.out.println("Exiting program...");
                     break;

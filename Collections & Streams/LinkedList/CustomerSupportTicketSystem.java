@@ -51,6 +51,8 @@ public class CustomerSupportTicketSystem {
         do {
             System.out.println("\n1. Add ticket details");
             System.out.println("2. Print tickets");
+            System.out.println("3. Process next ticket");
+            System.out.println("4. Search ticket by ID");
             System.out.println("0. Exit the program");
             System.out.print("Enter choice: ");
 
@@ -61,7 +63,7 @@ public class CustomerSupportTicketSystem {
                 case 1: {
                     System.out.print("Enter ticket ID: ");
                     int userTicketId = sc.nextInt();
-                    sc.nextLine();
+                    sc.nextLine();    // important dont understand since it was keep throwing emty name so codex fix by adding it  we wiil learn it about later 
 
                     System.out.print("Enter customer name: ");
                     String ticketUserName = sc.nextLine();
@@ -119,6 +121,38 @@ public class CustomerSupportTicketSystem {
                     break;
                 }
 
+                case 3:{
+                    Ticket nextTicket = tickets.pollFirst();
+                    if(nextTicket != null){
+                        System.out.println("Ticket processed successfully");
+                        System.out.println(nextTicket);
+                    }
+                    else{
+                        System.out.println("List is empty");
+                    }
+                    break;
+                }
+                case 4:{
+                    int size = tickets.size();
+                    boolean found = false;
+                    if(size == 0){
+                        System.out.println("Ticket list is empty");
+                        break;
+                    }
+                    System.out.println("Enter the ID : ");
+                    int searchId = sc.nextInt();
+                    for(Ticket t : tickets){
+                        if(t.getTicketId() == searchId){
+                            System.out.println(t);
+                            found = true;
+                            break;
+                        }
+                    }
+                    if(!found){
+                        System.out.println("Ticket not found");
+                    }
+                    break;
+                }
                 case 0: {
                     System.out.println("Exiting...");
                     break;
