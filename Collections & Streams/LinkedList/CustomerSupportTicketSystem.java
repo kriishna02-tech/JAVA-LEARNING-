@@ -1,4 +1,5 @@
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -53,6 +54,7 @@ public class CustomerSupportTicketSystem {
             System.out.println("2. Print tickets");
             System.out.println("3. Process next ticket");
             System.out.println("4. Search ticket by ID");
+            System.out.println("5. Delete ticket by ID");
             System.out.println("0. Exit the program");
             System.out.print("Enter choice: ");
 
@@ -144,6 +146,33 @@ public class CustomerSupportTicketSystem {
                     for(Ticket t : tickets){
                         if(t.getTicketId() == searchId){
                             System.out.println(t);
+                            found = true;
+                            break;
+                        }
+                    }
+                    if(!found){
+                        System.out.println("Ticket not found");
+                    }
+                    break;
+                }
+
+                case 5:{
+                    if(tickets.size() == 0) {
+                        System.out.println("Ticket List is empty");
+                        break;
+                    }
+                    boolean found = false;
+                    System.out.println("Enter the ticket id :");
+                    int searchId = sc.nextInt();
+
+                    Iterator<Ticket> it = tickets.iterator();
+
+                    while(it.hasNext()){    //hasNext()	Check karta hai ki next element available hai ya nahi
+                        Ticket t = it.next();   //next()	Next element return karta hai
+
+                        if(t.getTicketId() == searchId){
+                            it.remove();      //  /remove()	Last returned element ko safely remove karta hai
+                            System.out.println("Ticket deleted...");
                             found = true;
                             break;
                         }
